@@ -8,21 +8,29 @@ class PayeeCategorizer(ImporterHook):
         self.categories = categories
 
     def __call__(self, importer, file, imported_entries, existing_entries):
-        return [self.process_entry(entry) for entry in imported_entries]
+        return [
+            self._process(entry) or entry for entry in imported_entries
+        ]
 
-    def process_entry(self, entry):
+    def _process(self, entry):
+        if type(entry) != data.Transaction or len(entry.postings) > 1:
+            return
+
         for category in self.categories:
             for payee in self.categories[category]:
                 if re.match(payee, (entry.payee or entry.narration)):
-                    entry.postings.append(
-                        data.Posting(
-                            category,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                        )
+                    posting = data.Posting(
+                        category,
+                        None,
+                        None,
+                        None,
+                        None,
+                        None,
                     )
+
+                    if entry.postings[0].units.number > 0:
+                        entry.postings.append(posting)
+                    else:
+                        entry.postings.insert(0, posting)
+
                     return entry
-        return entry
