@@ -2,7 +2,7 @@
 
 Decorator for beancount importers, providing automatic categorization of transactions. Greatly inspired by [smart_importer](https://github.com/beancount/smart_importer) and by [ledger-cli's payee subdirective for accounts](https://www.ledger-cli.org/3.0/doc/ledger3.html#Command-Directives).
 
-Whilst the machine learning approach of smart_importers works great in most cases, one may miss ledger-cli's feature to apply categorization rules that are "set in stone". This importer does just that, categorizing payees of imported transactions to the appropriate accounts through user provided regular expressions.
+Whilst the machine learning approach of `smart_importer` works great in most cases, one may miss ledger-cli's feature to apply categorization rules that are "set in stone". This importer does just that, categorizing payees of imported transactions to the appropriate accounts through user provided regular expressions.
 
 ## Installation
 
