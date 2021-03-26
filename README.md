@@ -57,7 +57,7 @@ Matching CSV entries will produce transactions such as the following:
     Assets:DKB:EC                  -15.72 EUR
 ```
 
-To get the best of both worlds, it is certainly possible (and encouraged) to use the categorizer in conjunction with `smart_importer`. Probably the most useful setup is to first use the categorizer to apply the predefined rules and then let the smart importer handle the uncategorized cases. This way the categorization rules are ensured to be applied, as the categorizer only adds a postings to the transaction if there already exists not more than one posting.
+To get the best of both worlds, it is certainly possible (and encouraged) to use the categorizer in conjunction with `smart_importer`. Probably the most useful setup is to first use the categorizer to apply the predefined rules and then let the smart importer handle the uncategorized cases. This way the categorization rules are ensured to be applied, as the categorizer only adds a postings to the transaction if exactly one posting exists thus far.
 
 The following configuration is an example of the combined use with `smart_importer`:
 
