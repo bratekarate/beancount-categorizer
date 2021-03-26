@@ -13,7 +13,7 @@ class PayeeCategorizer(ImporterHook):
         ]
 
     def _process(self, entry):
-        if type(entry) != data.Transaction or len(entry.postings) > 1:
+        if type(entry) != data.Transaction or len(entry.postings) != 1:
             return
 
         for category in self.categories:
