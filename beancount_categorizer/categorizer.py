@@ -1,6 +1,6 @@
 import re
 from beancount.core import data
-from .hooks import ImporterHook
+from smart_importer.hooks import ImporterHook
 
 
 class PayeeCategorizer(ImporterHook):
